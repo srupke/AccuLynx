@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccuLynx.Twitter.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,13 @@ namespace AccuLynx.Twitter.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private TwitterContext db = new TwitterContext();
+
         public ActionResult Index()
         {
-            return View();
+            var list = db.Analysis.ToList();
+
+           return View();
         }
 
         public ActionResult About()
