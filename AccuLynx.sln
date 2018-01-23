@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Web", "AccuLynx.Twitter.Web\AccuLynx.Twitter.Web.csproj", "{3D4614BD-D430-42B4-9EAC-C6C7C90BD2F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Dal", "AccuLynx.Twitter.Dal\AccuLynx.Twitter.Dal.csproj", "{74198232-46BF-4816-97E9-97FE7095FFE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Managers", "AccuLynx.Twitter.Managers\AccuLynx.Twitter.Managers.csproj", "{8861735C-9BCC-47BC-830E-42FCD10B1089}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3D4614BD-D430-42B4-9EAC-C6C7C90BD2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4614BD-D430-42B4-9EAC-C6C7C90BD2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D4614BD-D430-42B4-9EAC-C6C7C90BD2F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74198232-46BF-4816-97E9-97FE7095FFE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74198232-46BF-4816-97E9-97FE7095FFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74198232-46BF-4816-97E9-97FE7095FFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74198232-46BF-4816-97E9-97FE7095FFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

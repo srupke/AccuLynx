@@ -203,6 +203,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccuLynx.Twitter.Dal\AccuLynx.Twitter.Dal.csproj">
+      <Project>{74198232-46bf-4816-97e9-97fe7095ffe2}</Project>
+      <Name>AccuLynx.Twitter.Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccuLynx.Twitter.Managers\AccuLynx.Twitter.Managers.csproj">
+      <Project>{8861735c-9bcc-47bc-830e-42fcd10b1089}</Project>
+      <Name>AccuLynx.Twitter.Managers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
