@@ -9,7 +9,7 @@ namespace AccuLynx.Twitter.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "AccuLynx.Twitter.Web.Models.TwitterContext";
         }
 
@@ -20,11 +20,7 @@ namespace AccuLynx.Twitter.Web.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
 
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { Description = "Sample 1" });
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { Description = "Sample 2" });
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { Description = "Sample 3" });
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { Description = "Sample 4" });
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { Description = "Sample 5" });
+            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { WordOrPhrase1 = "Goonies", WordOrPhrase2 = "It's our time" });
         }
     }
 }

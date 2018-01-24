@@ -11,7 +11,14 @@ namespace AccuLynx.Twitter.Web.Models
         [Key]
         public int AnalysisId { get; set; }
 
-        public string Description { get; set; }
+        [Required]
+        public string WordOrPhrase1 { get; set; }
+
+        [Required]
+        public string WordOrPhrase2 { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

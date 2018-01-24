@@ -13,23 +13,21 @@ namespace AccuLynx.Twitter.Web.Controllers
 
         public ActionResult Index()
         {
-            var list = db.Analysis.ToList();
-
            return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult AddTwitterAnalysis(TwitterAnalysis analysis)
         {
-            ViewBag.Message = "Your application description page.";
+            db.Analysis.Add(analysis);
+            db.SaveChanges();
 
-            return View();
+            return Json(new { });
         }
 
-        public ActionResult Contact()
+        public ActionResult GetTwitterAnalysisList()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return Json(new { analysisList = db.Analysis.ToList() }, JsonRequestBehavior.AllowGet);
         }
     }
 }

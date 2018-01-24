@@ -10,7 +10,7 @@ namespace AccuLynx.Twitter.Web.Models
     {
         public TwitterContext() : base("name=MyDbConnection")
         {
-            
+            //Database.SetInitializer(new DropCreateDatabaseAlways<TwitterContext>());
         }
 
         public DbSet<TwitterAnalysis> Analysis { get; set; }

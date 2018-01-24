@@ -2,7 +2,85 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
-</div>
+@section scripts {
+    <script src="@Url.Content("~/Scripts/angular.js")" type="text/javascript"></script>
+    <script>
+        var nameApp = angular.module('twitterApp', []);
+
+        nameApp.controller('twitterCtrl', ['$scope', '$http', function ($scope, $http) {
+            //$scope.employee = {};
+            $scope.analysisList = [];
+            $scope.newAnalysis = {};
+
+            //$scope.getEmployee = function () {
+            //    var params = {
+            //        id: 1
+            //    };
+
+            //    $http.get('/Home/GetEmployee', { params: params }).then(
+            //        function (successResponse) {
+            //            $scope.employee = successResponse.data.employee;
+            //        },
+            //        function (errorResponse) {
+            //            // handle errors here
+            //        });
+            //};
+
+            $scope.getAnalysisList = function () {
+                $http.get('/Home/GetTwitterAnalysisList').then(
+                    function (successResponse) {
+                        $scope.analysisList = successResponse.data.analysisList;
+                    },
+                    function (errorResponse) {
+                        // handle errors here
+                    });
+            };
+
+            $scope.addAnalysis = function () {
+                $http.post('/Home/AddTwitterAnalysis', $scope.newAnalysis).then(
+                    function (successResponse) {
+                        $scope.newAnalysis = {};
+                        $scope.analysisList = getAnalysisList();
+                    },
+                    function (errorResponse) {
+                        // handle errors here
+                    });
+            };
+        }]);
+    </script>
+}
+
+    <div class="jumbotron" ng-app="twitterApp" ng-controller="twitterCtrl">
+        <h2>Compares the Twitter popularity for 2 Words or Phrases</h2>
+
+        <form name="twitterForm" ng-submit="addAnalysis()" novalidate>
+            <p>
+                Word or Phrase:<br>
+                <input type="text" name="wordOrPhrase1" ng-model="newAnalysis.WordOrPhrase1" required>
+                <span style="color:red" ng-show="twitterForm.wordOrPhrase1.$dirty && twitterForm.wordOrPhrase1.$invalid">
+                    <span ng-show="twitterForm.wordOrPhrase1.$error.required">Please specify a word or phrase.</span>
+                </span>
+            </p>
+
+            <p>
+                Word or Phrase:<br>
+                <input type="text" name="wordOrPhrase2" ng-model="newAnalysis.WordOrPhrase2" required>
+                <span style="color:red" ng-show="twitterForm.wordOrPhrase2.$dirty && twitterForm.wordOrPhrase2.$invalid">
+                    <span ng-show="twitterForm.wordOrPhrase2.$error.required">Please specify a word or phrase.</span>
+                </span>
+            </p>
+
+            <p>
+                <input type="submit" ng-disabled="twitterForm.wordOrPhrase1.$dirty && twitterForm.wordOrPhrase1.$invalid ||
+                       twitterForm.wordOrPhrase2.$dirty && twitterForm.wordOrPhrase2.$invalid">
+            </p>
+        </form>
+
+        <h2>Twitter popularity Analysis History</h2>
+        <a href="" ng-click="getAnalysisList()">Get History</a>
+        <div ng-repeat="analysis in analysisList">
+            <p>Id: {{analysis.AnalysisId}}</p>
+            <p>Word or Phrase 1: {{analysis.WordOrPhrase1}}</p>
+            <p>Word or Phrase 2: {{analysis.WordOrPhrase2}}</p>
+        </div>
+    </div>

@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AccuLynx.Twitter.Web")]
+[assembly: AssemblyTitle("AccuLynx Twitter")]
 [assembly: AssemblyDescription("AccuLynx Twitter - Web")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
