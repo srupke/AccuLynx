@@ -153,9 +153,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ApplicationHelper.cs" />
-    <Compile Include="Migrations\201801240140198_Initial.cs" />
-    <Compile Include="Migrations\201801240140198_Initial.Designer.cs">
-      <DependentUpon>201801240140198_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201801240324517_Initial.cs" />
+    <Compile Include="Migrations\201801240324517_Initial.Designer.cs">
+      <DependentUpon>201801240324517_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TwitterAnalysis.cs" />
@@ -1005,8 +1005,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801240140198_Initial.resx">
-      <DependentUpon>201801240140198_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801240324517_Initial.resx">
+      <DependentUpon>201801240324517_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

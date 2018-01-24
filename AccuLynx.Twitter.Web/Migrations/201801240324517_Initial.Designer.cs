@@ -13,7 +13,7 @@ namespace AccuLynx.Twitter.Web.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201801240140198_Initial"; }
+            get { return "201801240324517_Initial"; }
         }
         
         string IMigrationMetadata.Source

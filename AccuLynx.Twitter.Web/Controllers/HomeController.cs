@@ -13,7 +13,7 @@ namespace AccuLynx.Twitter.Web.Controllers
 
         public ActionResult Index()
         {
-           return View();
+            return View();
         }
 
         [HttpPost]

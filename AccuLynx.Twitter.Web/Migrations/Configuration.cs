@@ -9,8 +9,7 @@ namespace AccuLynx.Twitter.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "AccuLynx.Twitter.Web.Models.TwitterContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(AccuLynx.Twitter.Web.Models.TwitterContext context)
@@ -19,8 +18,6 @@ namespace AccuLynx.Twitter.Web.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-
-            context.Analysis.AddOrUpdate(new Models.TwitterAnalysis() { WordOrPhrase1 = "Goonies", WordOrPhrase2 = "It's our time" });
         }
     }
 }
