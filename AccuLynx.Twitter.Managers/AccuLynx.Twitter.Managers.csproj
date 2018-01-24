@@ -56,6 +56,10 @@
       <Project>{74198232-46bf-4816-97e9-97fe7095ffe2}</Project>
       <Name>AccuLynx.Twitter.Dal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccuLynx.Twitter.Models\AccuLynx.Twitter.Models.csproj">
+      <Project>{22a1bb64-8652-4b47-ac90-4a17c34c05ed}</Project>
+      <Name>AccuLynx.Twitter.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

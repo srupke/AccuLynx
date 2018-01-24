@@ -57,22 +57,22 @@
             <p>
                 Word or Phrase:<br>
                 <input type="text" name="wordOrPhrase1" ng-model="newAnalysis.WordOrPhrase1" required>
-                <span style="color:red" ng-show="twitterForm.wordOrPhrase1.$dirty && twitterForm.wordOrPhrase1.$invalid">
-                    <span ng-show="twitterForm.wordOrPhrase1.$error.required">Please specify a word or phrase.</span>
+                <span style="color:red" ng-show="twitterForm.wordOrPhrase1.$invalid">
+                    <span ng-show="twitterForm.wordOrPhrase1.$invalid">* Required</span>
                 </span>
             </p>
 
             <p>
                 Word or Phrase:<br>
                 <input type="text" name="wordOrPhrase2" ng-model="newAnalysis.WordOrPhrase2" required>
-                <span style="color:red" ng-show="twitterForm.wordOrPhrase2.$dirty && twitterForm.wordOrPhrase2.$invalid">
-                    <span ng-show="twitterForm.wordOrPhrase2.$error.required">Please specify a word or phrase.</span>
+                <span style="color:red" ng-show="twitterForm.wordOrPhrase2.$invalid">
+                    <span ng-show="twitterForm.wordOrPhrase2.$invalid">* Required</span>
                 </span>
             </p>
 
             <p>
-                <input type="submit" ng-disabled="twitterForm.wordOrPhrase1.$dirty && twitterForm.wordOrPhrase1.$invalid ||
-                       twitterForm.wordOrPhrase2.$dirty && twitterForm.wordOrPhrase2.$invalid">
+                <input type="submit" ng-disabled="twitterForm.wordOrPhrase1.$invalid ||
+                       twitterForm.wordOrPhrase2.$invalid">
             </p>
         </form>
 

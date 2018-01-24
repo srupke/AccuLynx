@@ -153,13 +153,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ApplicationHelper.cs" />
-    <Compile Include="Migrations\201801240324517_Initial.cs" />
-    <Compile Include="Migrations\201801240324517_Initial.Designer.cs">
-      <DependentUpon>201801240324517_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\TwitterAnalysis.cs" />
-    <Compile Include="Models\TwitterContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -980,6 +973,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -995,19 +989,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccuLynx.Twitter.Dal\AccuLynx.Twitter.Dal.csproj">
-      <Project>{74198232-46bf-4816-97e9-97fe7095ffe2}</Project>
-      <Name>AccuLynx.Twitter.Dal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccuLynx.Twitter.Managers\AccuLynx.Twitter.Managers.csproj">
       <Project>{8861735c-9bcc-47bc-830e-42fcd10b1089}</Project>
       <Name>AccuLynx.Twitter.Managers</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801240324517_Initial.resx">
-      <DependentUpon>201801240324517_Initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <ProjectReference Include="..\AccuLynx.Twitter.Models\AccuLynx.Twitter.Models.csproj">
+      <Project>{22a1bb64-8652-4b47-ac90-4a17c34c05ed}</Project>
+      <Name>AccuLynx.Twitter.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

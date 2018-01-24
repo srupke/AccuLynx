@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AccuLynx.Twitter.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AccuLynx.Twitter.Web.Models
+namespace AccuLynx.Twitter.Dal
 {
     public class TwitterContext : DbContext
     {
@@ -13,6 +15,6 @@ namespace AccuLynx.Twitter.Web.Models
             //Database.SetInitializer(new DropCreateDatabaseAlways<TwitterContext>());
         }
 
-        public DbSet<TwitterAnalysis> Analysis { get; set; }
+        public DbSet<TwitterAnalysisModel> Analysis { get; set; }
     }
 }
