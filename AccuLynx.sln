@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Dal", "Acc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Managers", "AccuLynx.Twitter.Managers\AccuLynx.Twitter.Managers.csproj", "{8861735C-9BCC-47BC-830E-42FCD10B1089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccuLynx.Twitter.Models", "AccuLynx.Twitter.Models\AccuLynx.Twitter.Models.csproj", "{22A1BB64-8652-4B47-AC90-4A17C34C05ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8861735C-9BCC-47BC-830E-42FCD10B1089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22A1BB64-8652-4B47-AC90-4A17C34C05ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22A1BB64-8652-4B47-AC90-4A17C34C05ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22A1BB64-8652-4B47-AC90-4A17C34C05ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22A1BB64-8652-4B47-AC90-4A17C34C05ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

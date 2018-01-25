@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AccuLynx.Twitter.Managers;
+using AccuLynx.Twitter.Models;
 using System.Web.Mvc;
 
 namespace AccuLynx.Twitter.Web.Controllers
@@ -13,18 +11,21 @@ namespace AccuLynx.Twitter.Web.Controllers
             return View();
         }
 
-        public ActionResult About()
+        [HttpPost]
+        public ActionResult AddTwitterAnalysis(TwitterAnalysisModel analysis)
         {
-            ViewBag.Message = "Your application description page.";
+            var manager = TwitterDalManager.GetTwitterDalManager();
 
-            return View();
+            manager.AddTwitterAnalysis(analysis);
+
+            return Json(new { });
         }
 
-        public ActionResult Contact()
+        public ActionResult GetTwitterAnalysisList()
         {
-            ViewBag.Message = "Your contact page.";
+            var manager = TwitterDalManager.GetTwitterDalManager();
 
-            return View();
+            return Json(new { analysisList = manager.GetTwitterAnalysisList() }, JsonRequestBehavior.AllowGet);
         }
     }
 }
