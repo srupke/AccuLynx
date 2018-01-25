@@ -50,6 +50,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TwitterApiManager.cs" />
     <Compile Include="TwitterDalManager.cs" />
+    <Compile Include="TwitterExtensions.cs" />
+    <Compile Include="TwitterRequestMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccuLynx.Twitter.Dal\AccuLynx.Twitter.Dal.csproj">
