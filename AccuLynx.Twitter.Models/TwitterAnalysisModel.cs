@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AccuLynx.Twitter.Models
@@ -10,13 +12,21 @@ namespace AccuLynx.Twitter.Models
         public int AnalysisId { get; set; }
 
         [Required]
-        public string WordOrPhrase1 { get; set; }
+        public string Description { get; set; }
 
         [Required]
-        public string WordOrPhrase2 { get; set; }
+        public DateTime AnalyzedOn { get; set; }
+
+
+        public ICollection<TwitterAnalysisPhraseModel> Phrases { get; set; }
 
         [Timestamp]
         public byte[] RowVersion { get; set; }
+
+        public TwitterAnalysisModel()
+        {
+            Phrases = new HashSet<TwitterAnalysisPhraseModel>();
+        }
 
     }
 }

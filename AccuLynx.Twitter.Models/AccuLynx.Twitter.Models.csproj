@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwitterAnalysisPhraseDetailModel.cs" />
     <Compile Include="TwitterAnalysisModel.cs" />
+    <Compile Include="TwitterAnalysisPhraseModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
