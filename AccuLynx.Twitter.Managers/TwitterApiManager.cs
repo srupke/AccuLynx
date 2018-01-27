@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AccuLynx.Twitter.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
@@ -16,6 +19,7 @@ namespace AccuLynx.Twitter.Managers
 
         public const string OauthVersion = "1.0";
         public const string OauthSignatureMethod = "HMAC-SHA1";
+        public const string Const_TwitterDateTemplate = "ddd MMM dd HH:mm:ss +ffff yyyy";
 
         public string ConsumerKey { set; get; }
         public string ConsumerKeySecret { set; get; }
@@ -54,7 +58,52 @@ namespace AccuLynx.Twitter.Managers
             return response;
         }
 
-        public string Search(string wordOrPhrase)
+        public TwitterAnalysisPhraseModel SearchForPhrase(string phrase, int order)
+        {
+            this.SetupInstance(
+                "y1nevIGaM8OxWGrulAUY4isFu"/*consumerKey*/,
+                "dczIkRq7sjVX4JeO51PTi6kvS1MVC5mnFOljT4DLLBVemYA33i"/*consumerKeySecret*/,
+                "955923380359876609-OwJ5ZImuldU0Kp9G6z1CUw0cpTsP0vu"/*accessToken*/,
+                "Mqbf5OIaStvfgW5rj7UiEUPpeUF576Xl8YvgxzRY5lUrN"/*accessTokenSecret*/);
+
+            var phraseModel = new TwitterAnalysisPhraseModel() { PhraseText = phrase, OrderId = order };
+            var result = this.Search(phrase);
+            dynamic jsonResult = JsonConvert.DeserializeObject(result);
+
+            var jsonResultStatus = (JArray)jsonResult.statuses;
+            var numberOfTweets = jsonResultStatus.Count;
+
+            foreach (var tweet in jsonResultStatus)
+            {
+                
+
+                var tweetCreatedAt = DateTime.ParseExact(tweet.Value<string>("created_at"), Const_TwitterDateTemplate, new System.Globalization.CultureInfo("en-US"));
+                var tweetText = tweet.Value<string>("text");
+                var tweetTruncated = tweet.Value<bool>("truncated");
+
+                var user = tweet.Value<JObject>("user");
+
+                var tweetUser = user.Value<string>("name");
+                var tweetScreenName = user.Value<string>("screen_name");
+
+                var tweetInfo = new TwitterAnalysisPhraseDetailModel();
+                tweetInfo.User = tweetUser;
+                tweetInfo.ScreenName = tweetScreenName;
+                tweetInfo.TweetCreatedAt = tweetCreatedAt;
+                tweetInfo.TweetText = tweetText;
+                tweetInfo.TweetTextTruncated = tweetTruncated;
+
+                phraseModel.Details.Add(tweetInfo);
+            }
+
+            return phraseModel;
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private string Search(string wordOrPhrase)
         {
             string resourceUrl = string.Format("https://api.twitter.com/1.1/search/tweets.json");
 
@@ -71,10 +120,6 @@ namespace AccuLynx.Twitter.Managers
 
             return response;
         }
-
-        #endregion
-
-        #region Private Methods
 
         private string GetResponse(string resourceUrl, TwitterRequestMethod method, SortedDictionary<string, string> requestParameters)
         {

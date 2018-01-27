@@ -1,7 +1,9 @@
 ﻿using AccuLynx.Twitter.Managers;
 using AccuLynx.Twitter.Models;
+using AccuLynx.Twitter.Web.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Web.Mvc;
 
 namespace AccuLynx.Twitter.Web.Controllers
@@ -14,40 +16,24 @@ namespace AccuLynx.Twitter.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddTwitterAnalysis(TwitterAnalysisModel analysis)
+        public ActionResult AddTwitterAnalysis(AnalysisModel analysis)
         {
+            var twitterAnalysis = new TwitterAnalysisModel();
+
+            twitterAnalysis.Description = string.Format("\"{0}\" vs \"{1}\"", analysis.WordOrPhrase1, analysis.WordOrPhrase2);
+            twitterAnalysis.AnalyzedOn = DateTime.Now;
+
             var apiManager = TwitterApiManager.GetTwitterApiManager();
 
-            apiManager.SetupInstance(
-                "y1nevIGaM8OxWGrulAUY4isFu"/*consumerKey*/,
-                "dczIkRq7sjVX4JeO51PTi6kvS1MVC5mnFOljT4DLLBVemYA33i"/*consumerKeySecret*/,
-                "955923380359876609-OwJ5ZImuldU0Kp9G6z1CUw0cpTsP0vu"/*accessToken*/,
-                "Mqbf5OIaStvfgW5rj7UiEUPpeUF576Xl8YvgxzRY5lUrN"/*accessTokenSecret*/);
+            var phrase1 = apiManager.SearchForPhrase(analysis.WordOrPhrase1, 1);
+            twitterAnalysis.Phrases.Add(phrase1);
 
-            var result1 = apiManager.Search(analysis.WordOrPhrase1);
-
-
-            dynamic jsonResult = JsonConvert.DeserializeObject(result1);
-
-            var jsonResultStatus = (JArray)jsonResult.statuses;
-            var numberOfTweets = jsonResultStatus.Count;
-
-            if (numberOfTweets > 0)
-            {
-                var mostRecentTweetText = jsonResultStatus[0].Value<string>("text");
-                var mostRecentTweetUser = jsonResultStatus[0].Value<JObject>("user");
-            }
-
-            var searchMetadata = (JObject)jsonResult.search_metadata;
-
-
-
-
-            var result2 = apiManager.Search(analysis.WordOrPhrase2);
+            var phase2 = apiManager.SearchForPhrase(analysis.WordOrPhrase2, 2);
+            twitterAnalysis.Phrases.Add(phase2);
 
             var manager = TwitterDalManager.GetTwitterDalManager();
 
-            manager.AddTwitterAnalysis(analysis);
+            manager.AddTwitterAnalysis(twitterAnalysis);
 
             return Json(new { });
         }
