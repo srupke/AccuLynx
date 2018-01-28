@@ -32,5 +32,12 @@ namespace AccuLynx.Twitter.Managers
         {
             return db.Analysis.ToList();
         }
+
+        public TwitterAnalysisModel GetTwitterAnalysis(int id)
+        {
+            var result = db.Analysis.First(a => a.AnalysisId == id);
+
+            return result;
+        }
     }
 }
