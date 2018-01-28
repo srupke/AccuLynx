@@ -44,9 +44,9 @@ namespace AccuLynx.Twitter.Web.Controllers
 
             var manager = TwitterDalManager.GetTwitterDalManager();
 
-            manager.AddTwitterAnalysis(twitterAnalysis);
+            twitterAnalysis = manager.AddTwitterAnalysis(twitterAnalysis);
 
-            return Json(new { });
+            return Json(new { analysis = twitterAnalysis }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetTwitterAnalysisList()

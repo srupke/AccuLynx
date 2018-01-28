@@ -19,7 +19,6 @@ namespace AccuLynx.Twitter.Models
 
 
         [ForeignKey("Analysis")]
-        [ScriptIgnore]
         public int AnalysisId { get; set; }
 
         [ScriptIgnore]

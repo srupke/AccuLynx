@@ -7,13 +7,15 @@
     <script>
         var nameApp = angular.module('twitterApp', []);
 
-        nameApp.controller('twitterCtrl', ['$scope', '$http', function ($scope, $http) {
+        nameApp.controller('twitterCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
             $scope.newAnalysis = {};
 
             $scope.addAnalysis = function () {
                 $http.post('/Home/AddTwitterAnalysis', $scope.newAnalysis).then(
                     function (successResponse) {
-                        $scope.newAnalysis = {};
+                        $scope.newAnalysis = successResponse.data.analysis;
+
+                        $window.location.href = '/Home/Detail/' + $scope.newAnalysis.AnalysisId;
                     },
                     function (errorResponse) {
                         // handle errors here

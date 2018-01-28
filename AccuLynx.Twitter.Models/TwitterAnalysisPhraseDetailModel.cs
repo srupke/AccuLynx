@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Script.Serialization;
 
 namespace AccuLynx.Twitter.Models
 {
@@ -27,6 +28,8 @@ namespace AccuLynx.Twitter.Models
 
         [ForeignKey("Phrase")]
         public int PhraseId { get; set; }
+
+        [ScriptIgnore]
         public TwitterAnalysisPhraseModel Phrase { get; set; }
 
         [Timestamp]
