@@ -8,6 +8,8 @@ namespace AccuLynx.Twitter.Dal
         public TwitterContext() : base("name=MyDbConnection")
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<TwitterContext>());
+
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<TwitterAnalysisModel> Analysis { get; set; }

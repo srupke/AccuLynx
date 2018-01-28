@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Script.Serialization;
 
 namespace AccuLynx.Twitter.Models
 {
@@ -18,7 +19,10 @@ namespace AccuLynx.Twitter.Models
 
 
         [ForeignKey("Analysis")]
+        [ScriptIgnore]
         public int AnalysisId { get; set; }
+
+        [ScriptIgnore]
         public TwitterAnalysisModel Analysis { get; set; }
 
         public ICollection<TwitterAnalysisPhraseDetailModel> Details { get; set; }

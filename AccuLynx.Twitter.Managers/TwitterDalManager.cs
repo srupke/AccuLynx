@@ -37,6 +37,8 @@ namespace AccuLynx.Twitter.Managers
         {
             var result = db.Analysis.First(a => a.AnalysisId == id);
 
+            db.Entry(result).Collection(p => p.Phrases).Load();
+
             return result;
         }
     }

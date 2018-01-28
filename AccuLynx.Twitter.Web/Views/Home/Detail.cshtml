@@ -41,33 +41,31 @@
         <div class="container">
             <h2>Detail of Twitter Comparison - {{analysis.Description}}</h2>
 
-
-
-
-
-
+            <ul class="nav nav-tabs">
+                <li ng-repeat="phrase in analysis.Phrases"><a href="#">{{phrase.PhraseText}}</a></li>
+            </ul>
 
             @*<table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Analysis</th>
-                        <th>Analyzed On</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="analysis in analysisList">
-                        <td>{{analysis.AnalysisId}}</td>
-                        <td>{{analysis.Description}}</td>
-                        <td>{{analysis.AnalyzedOn | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-                        <td>
-                            <div class="btn-group-sm">
-                                <button type="button" class="btn btn-primary" ng-click="go('@Url.Action("Detail","Home")/'+analysis.AnalysisId)">Details</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>*@
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Analysis</th>
+                    <th>Analyzed On</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="analysis in analysisList">
+                    <td>{{analysis.AnalysisId}}</td>
+                    <td>{{analysis.Description}}</td>
+                    <td>{{analysis.AnalyzedOn | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button type="button" class="btn btn-primary" ng-click="go('@Url.Action("Detail","Home")/'+analysis.AnalysisId)">Details</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>*@
         </div>
     </div>
