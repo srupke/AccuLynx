@@ -8,39 +8,12 @@
         var nameApp = angular.module('twitterApp', []);
 
         nameApp.controller('twitterCtrl', ['$scope', '$http', function ($scope, $http) {
-            //$scope.employee = {};
-            $scope.analysisList = [];
             $scope.newAnalysis = {};
-
-            //$scope.getEmployee = function () {
-            //    var params = {
-            //        id: 1
-            //    };
-
-            //    $http.get('/Home/GetEmployee', { params: params }).then(
-            //        function (successResponse) {
-            //            $scope.employee = successResponse.data.employee;
-            //        },
-            //        function (errorResponse) {
-            //            // handle errors here
-            //        });
-            //};
-
-            $scope.getAnalysisList = function () {
-                $http.get('/Home/GetTwitterAnalysisList').then(
-                    function (successResponse) {
-                        $scope.analysisList = successResponse.data.analysisList;
-                    },
-                    function (errorResponse) {
-                        // handle errors here
-                    });
-            };
 
             $scope.addAnalysis = function () {
                 $http.post('/Home/AddTwitterAnalysis', $scope.newAnalysis).then(
                     function (successResponse) {
                         $scope.newAnalysis = {};
-                        $scope.analysisList = getAnalysisList();
                     },
                     function (errorResponse) {
                         // handle errors here
@@ -71,16 +44,10 @@
             </p>
 
             <p>
-                <input type="submit" ng-disabled="twitterForm.wordOrPhrase1.$invalid ||
+                <button type="submit" class="btn btn-primary" ng-disabled="twitterForm.wordOrPhrase1.$invalid ||
                        twitterForm.wordOrPhrase2.$invalid">
+                    Run Analysis
+                </button>
             </p>
         </form>
-
-        <h2>Twitter popularity Analysis History</h2>
-        <a href="" ng-click="getAnalysisList()">Get History</a>
-        <div ng-repeat="analysis in analysisList">
-            <p>Id: {{analysis.AnalysisId}}</p>
-            <p>Word or Phrase 1: {{analysis.WordOrPhrase1}}</p>
-            <p>Word or Phrase 2: {{analysis.WordOrPhrase2}}</p>
-        </div>
     </div>

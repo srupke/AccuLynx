@@ -15,6 +15,17 @@ namespace AccuLynx.Twitter.Web.Controllers
             return View();
         }
 
+        public ActionResult History()
+        {
+            return View();
+        }
+
+        public ActionResult Detail(int id)
+        {
+            ViewData["id"] = id;
+            return View();
+        }
+
         [HttpPost]
         public ActionResult AddTwitterAnalysis(AnalysisModel analysis)
         {
@@ -42,7 +53,18 @@ namespace AccuLynx.Twitter.Web.Controllers
         {
             var manager = TwitterDalManager.GetTwitterDalManager();
 
-            return Json(new { analysisList = manager.GetTwitterAnalysisList() }, JsonRequestBehavior.AllowGet);
+            var list = manager.GetTwitterAnalysisList();
+
+            return Json(new { analysisList = list }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetTwitterAnalysis(int id)
+        {
+            var manager = TwitterDalManager.GetTwitterDalManager();
+
+            var model = manager.GetTwitterAnalysis(id);
+
+            return Json(new { analysis = model }, JsonRequestBehavior.AllowGet);
         }
     }
 }

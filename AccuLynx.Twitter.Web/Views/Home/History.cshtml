@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "History Page";
+}
+
+@section scripts {
+    <script src="@Url.Content("~/Scripts/angular.js")" type="text/javascript"></script>
+
+    <script>
+        var nameApp = angular.module('twitterApp', []);
+
+        nameApp.filter("mydate", function () {
+            var re = /\/Date\(([0-9]*)\)\//;
+            return function (x) {
+                var m = x.match(re);
+                if (m) return new Date(parseInt(m[1]));
+                else return null;
+            };
+        });
+
+        nameApp.controller('twitterCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+            $http.get('/Home/GetTwitterAnalysisList').then(
+                function (successResponse) {
+                    $scope.analysisList = successResponse.data.analysisList;
+                },
+                function (errorResponse) {
+                    // handle errors here
+                });
+
+            $scope.go = function (path) {
+                $window.location.href = path;
+            };
+        }]);
+    </script>
+}
+
+<div class="jumbotron" ng-app="twitterApp" ng-controller="twitterCtrl">
+    <div class="container">
+        <h2>History of Twitter Comparisons</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Analysis</th>
+                    <th>Analyzed On</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="analysis in analysisList">
+                    <td>{{analysis.AnalysisId}}</td>
+                    <td>{{analysis.Description}}</td>
+                    <td>{{analysis.AnalyzedOn | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                    <td>
+                        <div class="btn-group-sm">
+                            <button type="button" class="btn btn-primary" ng-click="go('@Url.Action("Detail","Home")/'+analysis.AnalysisId)">Details</button>
+                        </div>
+                    </td>
+                 </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
