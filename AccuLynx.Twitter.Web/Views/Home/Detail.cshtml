@@ -25,6 +25,8 @@
             $http.get('/Home/GetTwitterAnalysis', { params: params }).then(
                 function (successResponse) {
                     $scope.analysis = successResponse.data.analysis;
+                    $scope.phrase1 = $scope.analysis.Phrases[0];
+                    $scope.phrase2 = $scope.analysis.Phrases[1];
                 },
                 function (errorResponse) {
                     // handle errors here
@@ -41,33 +43,89 @@
         <div class="container">
             <h2>Detail of Twitter Comparison - {{analysis.Description}}</h2>
 
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
+                <li><a data-toggle="tab" href="#phrase0">{{phrase1.PhraseText}}</a></li>
+                <li><a data-toggle="tab" href="#phrase1">{{phrase2.PhraseText}}</a></li>
+            </ul>
 
-
-
-
-
-
-            @*<table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Analysis</th>
-                        <th>Analyzed On</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="analysis in analysisList">
-                        <td>{{analysis.AnalysisId}}</td>
-                        <td>{{analysis.Description}}</td>
-                        <td>{{analysis.AnalyzedOn | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-                        <td>
-                            <div class="btn-group-sm">
-                                <button type="button" class="btn btn-primary" ng-click="go('@Url.Action("Detail","Home")/'+analysis.AnalysisId)">Details</button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>*@
+            <div class="tab-content">
+                <div id="summary" class="tab-pane fade in active">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Phrase</th>
+                                <th>Total Popular Tweets</th>
+                                <th>Total Retweet</th>
+                                <th>Total Favorite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{phrase1.PhraseText}}</td>
+                                <td>{{phrase1.TotalTweets}}</td>
+                                <td>{{phrase1.TotalRetweetCount}}</td>
+                                <td>{{phrase1.TotalFavoriteCount}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{phrase2.PhraseText}}</td>
+                                <td>{{phrase2.TotalTweets}}</td>
+                                <td>{{phrase2.TotalRetweetCount}}</td>
+                                <td>{{phrase2.TotalFavoriteCount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="phrase0" class="tab-pane fade">
+                    <h3>{{phrase1.PhraseText}} - Tweets</h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tweet</th>
+                                <th>Retweet Count</th>
+                                <th>Favorite Count</th>
+                                <th>Tweeted On</th>
+                                <th>User</th>
+                                <th>Screen Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detail in phrase1.Details">
+                                <td>{{detail.TweetText}}</td>
+                                <td>{{detail.RetweetCount}}</td>
+                                <td>{{detail.FavoriteCount}}</td>
+                                <td>{{detail.TweetCreatedAt | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                                <td>{{detail.User}}</td>
+                                <td>{{detail.ScreenName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="phrase1" class="tab-pane fade">
+                    <h3>{{phrase2.PhraseText}} - Tweets</h3>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Tweet</th>
+                                <th>Retweet Count</th>
+                                <th>Favorite Count</th>
+                                <th>Tweeted On</th>
+                                <th>User</th>
+                                <th>Screen Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="detail in phrase2.Details">
+                                <td>{{detail.TweetText}}</td>
+                                <td>{{detail.RetweetCount}}</td>
+                                <td>{{detail.FavoriteCount}}</td>
+                                <td>{{detail.TweetCreatedAt | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                                <td>{{detail.User}}</td>
+                                <td>{{detail.ScreenName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>

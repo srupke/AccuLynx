@@ -22,10 +22,12 @@ namespace AccuLynx.Twitter.Managers
             return _instance;
         }
 
-        public void AddTwitterAnalysis(TwitterAnalysisModel analysis)
+        public TwitterAnalysisModel AddTwitterAnalysis(TwitterAnalysisModel analysis)
         {
             db.Analysis.Add(analysis);
             db.SaveChanges();
+
+            return analysis;
         }
 
         public List<TwitterAnalysisModel> GetTwitterAnalysisList()
@@ -36,6 +38,13 @@ namespace AccuLynx.Twitter.Managers
         public TwitterAnalysisModel GetTwitterAnalysis(int id)
         {
             var result = db.Analysis.First(a => a.AnalysisId == id);
+
+            db.Entry(result).Collection(p => p.Phrases).Load();
+
+            foreach (var phrase in result.Phrases)
+            {
+                db.Entry(phrase).Collection(d => d.Details).Load();
+            }
 
             return result;
         }
