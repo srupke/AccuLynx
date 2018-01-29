@@ -80,6 +80,8 @@ namespace AccuLynx.Twitter.Managers
                 var tweetCreatedAt = DateTime.ParseExact(tweet.Value<string>("created_at"), Const_TwitterDateTemplate, new System.Globalization.CultureInfo("en-US"));
                 var tweetText = tweet.Value<string>("text");
                 var tweetTruncated = tweet.Value<bool>("truncated");
+                var retweetCount = tweet.Value<int>("retweet_count");
+                var favoriteCount = tweet.Value<int>("favorite_count");
 
                 var user = tweet.Value<JObject>("user");
 
@@ -92,6 +94,8 @@ namespace AccuLynx.Twitter.Managers
                 tweetInfo.TweetCreatedAt = tweetCreatedAt;
                 tweetInfo.TweetText = tweetText;
                 tweetInfo.TweetTextTruncated = tweetTruncated;
+                tweetInfo.RetweetCount = retweetCount;
+                tweetInfo.FavoriteCount = favoriteCount;
 
                 phraseModel.Details.Add(tweetInfo);
             }
@@ -111,7 +115,7 @@ namespace AccuLynx.Twitter.Managers
             {
                 { "q", wordOrPhrase },
                 { "lang", "en" },
-                { "result_type", "recent" }, // popular, mixed, recent
+                { "result_type", "popular" }, // popular, mixed, recent
                 { "count", "100" }, // Max value is 100
                 { "include_entities", "false" }
             };

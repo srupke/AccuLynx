@@ -59,7 +59,8 @@
                         <thead>
                             <tr>
                                 <th>Tweet</th>
-                                <th>Truncated</th>
+                                <th>Retweet Count</th>
+                                <th>Favorite Count</th>
                                 <th>Tweeted On</th>
                                 <th>User</th>
                                 <th>Screen Name</th>
@@ -68,7 +69,8 @@
                         <tbody>
                             <tr ng-repeat="detail in phrase1.Details">
                                 <td>{{detail.TweetText}}</td>
-                                <td>{{detail.TweetTextTruncated}}</td>
+                                <td>{{detail.RetweetCount}}</td>
+                                <td>{{detail.FavoriteCount}}</td>
                                 <td>{{detail.TweetCreatedAt | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
                                 <td>{{detail.User}}</td>
                                 <td>{{detail.ScreenName}}</td>
@@ -82,7 +84,8 @@
                         <thead>
                             <tr>
                                 <th>Tweet</th>
-                                <th>Truncated</th>
+                                <th>Retweet Count</th>
+                                <th>Favorite Count</th>
                                 <th>Tweeted On</th>
                                 <th>User</th>
                                 <th>Screen Name</th>
@@ -91,7 +94,8 @@
                         <tbody>
                             <tr ng-repeat="detail in phrase2.Details">
                                 <td>{{detail.TweetText}}</td>
-                                <td>{{detail.TweetTextTruncated}}</td>
+                                <td>{{detail.RetweetCount}}</td>
+                                <td>{{detail.FavoriteCount}}</td>
                                 <td>{{detail.TweetCreatedAt | mydate | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
                                 <td>{{detail.User}}</td>
                                 <td>{{detail.ScreenName}}</td>

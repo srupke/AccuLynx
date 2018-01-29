@@ -26,6 +26,12 @@ namespace AccuLynx.Twitter.Models
         [Required]
         public bool TweetTextTruncated { get; set; }
 
+        [Required]
+        public int RetweetCount { get; set; }
+
+        [Required]
+        public int FavoriteCount { get; set; }
+
         [ForeignKey("Phrase")]
         public int PhraseId { get; set; }
 
