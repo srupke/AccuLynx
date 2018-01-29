@@ -43,17 +43,40 @@
         <div class="container">
             <h2>Detail of Twitter Comparison - {{analysis.Description}}</h2>
 
-            @*<ul class="nav nav-tabs">
-                <li ng-repeat="phrase in analysis.Phrases"><a href="#">{{phrase.PhraseText}}</a></li>
-            </ul>*@
-
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#phrase0">{{phrase1.PhraseText}}</a></li>
+                <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
+                <li><a data-toggle="tab" href="#phrase0">{{phrase1.PhraseText}}</a></li>
                 <li><a data-toggle="tab" href="#phrase1">{{phrase2.PhraseText}}</a></li>
             </ul>
 
             <div class="tab-content">
-                <div id="phrase0" class="tab-pane fade in active">
+                <div id="summary" class="tab-pane fade in active">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Phrase</th>
+                                <th>Total Popular Tweets</th>
+                                <th>Total Retweet</th>
+                                <th>Total Favorite</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{phrase1.PhraseText}}</td>
+                                <td>{{phrase1.TotalTweets}}</td>
+                                <td>{{phrase1.TotalRetweetCount}}</td>
+                                <td>{{phrase1.TotalFavoriteCount}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{phrase2.PhraseText}}</td>
+                                <td>{{phrase2.TotalTweets}}</td>
+                                <td>{{phrase2.TotalRetweetCount}}</td>
+                                <td>{{phrase2.TotalFavoriteCount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="phrase0" class="tab-pane fade">
                     <h3>{{phrase1.PhraseText}} - Tweets</h3>
                     <table class="table table-hover">
                         <thead>
